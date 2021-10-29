@@ -13,6 +13,8 @@ import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app.routing.module';
 import { HeaderComponent } from './shared/component/header/header.component';
 import { PostListComponent } from './posts/post-list/post-list.component';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -23,12 +25,21 @@ import { PostListComponent } from './posts/post-list/post-list.component';
     CustomeCounterInputComponent,
     HomeComponent,
     HeaderComponent,
-    PostListComponent
+    PostListComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot({ counter: counterReducer }),
+    StoreDevtoolsModule.instrument({
+      logOnly: environment.production,
+      autoPause: true,
+      features: {
+        pause: false,
+        lock: true,
+        persist: true,
+      },
+    }),
     FormsModule,
   ],
   providers: [],
