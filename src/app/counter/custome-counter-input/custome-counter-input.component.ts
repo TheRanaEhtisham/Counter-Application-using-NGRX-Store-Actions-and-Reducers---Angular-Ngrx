@@ -15,6 +15,6 @@ export class CustomeCounterInputComponent implements OnInit {
   ngOnInit(): void {}
 
   onAdd() {
-    this.store.dispatch(customIcrement({ count: this.value }));
+    this.store.dispatch(customIcrement({ count: +this.value }));
   }
 }
